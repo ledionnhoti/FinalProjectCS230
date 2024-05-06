@@ -496,8 +496,10 @@ def plot_score_distribution(df):
     '''
     
     score_counts = df['SCORE'].value_counts().sort_index()
+            
     fig, ax = plt.subplots()
-    wedges, texts, autotexts = ax.pie(score_counts, labels=score_counts.index, startangle=90, autopct=lambda pct: "{:.1f}%".format(pct) if pct > 5 else '')
+    labels = ['Score is ' + str(i) for i in score_counts.index]
+    wedges, texts, autotexts = ax.pie(score_counts, labels=labels, startangle=90, autopct=lambda pct: "{:.1f}%".format(pct) if pct > 5 else '')
     ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     ax.set_title('Distribution of Rest Area Scores')
 
